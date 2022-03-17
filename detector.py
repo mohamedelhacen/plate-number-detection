@@ -19,6 +19,15 @@ def detect(image):
     except:
         print("No Plate Numbers detected")
 
+
+def show_video(cap):
+    while True:
+        _, image = cap.read()
+        detect(image)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+
 def detector():
     path = input("Enter path to an image or video: ")
     if path.endswith(('.jpg', '.jpeg', '.png', '.svg')):
@@ -27,21 +36,14 @@ def detector():
         cv2.waitKey()
     elif path.endswith(('.mp4', '.mov', '.gif', '.webm')):
         cap = cv2.VideoCapture(path)
-        while True:
-            _, image = cap.read()
-            detect(image)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+        show_video(cap)
     elif path == '0':
         cap = cv2.VideoCapture(0)
-        while True:
-            _, image = cap.read()
-            detect(image)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+        show_video(cap)
     else:
         print("Invalid input")
     cv2.destroyAllWindows()
+
 
 if __name__ == '__main__':
     detector()
