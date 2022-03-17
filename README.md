@@ -1,5 +1,5 @@
 # Plate Number Detection
-This script permits to the user to enter a path to an image and then detect
+This script allows the user to enter a path to an image and then detects
 the plate number if it is present. The detected plate number will be surrounded by
 a rectangle.
 
