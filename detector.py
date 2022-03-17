@@ -21,11 +21,11 @@ def detect(image):
 
 def detector():
     path = input("Enter path to an image or video: ")
-    if path.endswith(('.jpg', '.jpeg', '.png')):
+    if path.endswith(('.jpg', '.jpeg', '.png', '.svg')):
         image = cv2.imread(path)
         detect(image)
         cv2.waitKey()
-    elif path.endswith('.mp4'):
+    elif path.endswith(('.mp4', '.mov', '.gif', '.webm')):
         cap = cv2.VideoCapture(path)
         while True:
             _, image = cap.read()
